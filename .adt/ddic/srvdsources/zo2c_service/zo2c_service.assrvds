@@ -1,0 +1,4 @@
+@EndUserText.label: 'O2C Service'
+define service ZO2C_SERVICE {
+  expose ZO2C_REPORT_VIEW;
+}

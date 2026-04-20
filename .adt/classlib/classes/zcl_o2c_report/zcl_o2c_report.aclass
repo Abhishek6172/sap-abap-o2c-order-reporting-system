@@ -1,0 +1,227 @@
+CLASS zcl_o2c_report DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+ENDCLASS.
+
+CLASS zcl_o2c_report IMPLEMENTATION.
+
+  METHOD if_oo_adt_classrun~main.
+
+    DATA: lt_customer TYPE TABLE OF zo2c_customer,
+          lt_order    TYPE TABLE OF zo2c_order,
+          ls_customer TYPE zo2c_customer,
+          ls_order    TYPE zo2c_order.
+
+    DATA: lv_total TYPE p DECIMALS 2 VALUE 0.
+    DATA(lv_date) = cl_abap_context_info=>get_system_date( ).
+
+* Customers
+    SELECT SINGLE * FROM zo2c_customer WHERE customer_id = '0000000001' INTO @ls_customer.
+    IF sy-subrc <> 0.
+      ls_customer-client = sy-mandt.
+      ls_customer-customer_id = '0000000001'.
+      ls_customer-name = 'Abhishek'.
+      ls_customer-email = 'abhi@test.com'.
+      ls_customer-phone = '9999999999'.
+      ls_customer-city = 'Bhubaneswar'.
+      ls_customer-created_on = lv_date.
+      INSERT zo2c_customer FROM @ls_customer.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_customer WHERE customer_id = '0000000002' INTO @ls_customer.
+    IF sy-subrc <> 0.
+      ls_customer-client = sy-mandt.
+      ls_customer-customer_id = '0000000002'.
+      ls_customer-name = 'Rahul'.
+      ls_customer-email = 'rahul@test.com'.
+      ls_customer-phone = '8888888888'.
+      ls_customer-city = 'Delhi'.
+      ls_customer-created_on = lv_date.
+      INSERT zo2c_customer FROM @ls_customer.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_customer WHERE customer_id = '0000000003' INTO @ls_customer.
+    IF sy-subrc <> 0.
+      ls_customer-client = sy-mandt.
+      ls_customer-customer_id = '0000000003'.
+      ls_customer-name = 'Reehan'.
+      ls_customer-email = 'reehan@test.com'.
+      ls_customer-phone = '9000000001'.
+      ls_customer-city = 'Mumbai'.
+      ls_customer-created_on = lv_date.
+      INSERT zo2c_customer FROM @ls_customer.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_customer WHERE customer_id = '0000000004' INTO @ls_customer.
+    IF sy-subrc <> 0.
+      ls_customer-client = sy-mandt.
+      ls_customer-customer_id = '0000000004'.
+      ls_customer-name = 'Abhipray'.
+      ls_customer-email = 'abhipray@test.com'.
+      ls_customer-phone = '9000000002'.
+      ls_customer-city = 'Kolkata'.
+      ls_customer-created_on = lv_date.
+      INSERT zo2c_customer FROM @ls_customer.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_customer WHERE customer_id = '0000000005' INTO @ls_customer.
+    IF sy-subrc <> 0.
+      ls_customer-client = sy-mandt.
+      ls_customer-customer_id = '0000000005'.
+      ls_customer-name = 'Priya'.
+      ls_customer-email = 'priya@test.com'.
+      ls_customer-phone = '9000000003'.
+      ls_customer-city = 'Bangalore'.
+      ls_customer-created_on = lv_date.
+      INSERT zo2c_customer FROM @ls_customer.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_customer WHERE customer_id = '0000000006' INTO @ls_customer.
+    IF sy-subrc <> 0.
+      ls_customer-client = sy-mandt.
+      ls_customer-customer_id = '0000000006'.
+      ls_customer-name = 'Aarav'.
+      ls_customer-email = 'aarav@test.com'.
+      ls_customer-phone = '9000000004'.
+      ls_customer-city = 'Hyderabad'.
+      ls_customer-created_on = lv_date.
+      INSERT zo2c_customer FROM @ls_customer.
+    ENDIF.
+
+* Orders
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000001' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000001'.
+      ls_order-customer_id = '0000000001'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '1500.00'.
+      ls_order-status = 'CREATED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000002' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000002'.
+      ls_order-customer_id = '0000000002'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '2500.00'.
+      ls_order-status = 'SHIPPED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000003' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000003'.
+      ls_order-customer_id = '0000000003'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '3200.00'.
+      ls_order-status = 'DELIVERED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000004' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000004'.
+      ls_order-customer_id = '0000000004'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '1800.00'.
+      ls_order-status = 'SHIPPED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000005' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000005'.
+      ls_order-customer_id = '0000000005'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '4100.00'.
+      ls_order-status = 'CREATED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000006' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000006'.
+      ls_order-customer_id = '0000000006'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '5200.00'.
+      ls_order-status = 'SHIPPED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000007' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000007'.
+      ls_order-customer_id = '0000000003'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '900.00'.
+      ls_order-status = 'CANCELLED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000008' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000008'.
+      ls_order-customer_id = '0000000004'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '2750.00'.
+      ls_order-status = 'DELIVERED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000009' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000009'.
+      ls_order-customer_id = '0000000005'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '1500.00'.
+      ls_order-status = 'SHIPPED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT SINGLE * FROM zo2c_order WHERE order_id = '0000000010' INTO @ls_order.
+    IF sy-subrc <> 0.
+      ls_order-client = sy-mandt.
+      ls_order-order_id = '0000000010'.
+      ls_order-customer_id = '0000000006'.
+      ls_order-order_date = lv_date.
+      ls_order-amount = '3600.00'.
+      ls_order-status = 'CREATED'.
+      INSERT zo2c_order FROM @ls_order.
+    ENDIF.
+
+    SELECT * FROM zo2c_customer INTO TABLE @lt_customer.
+    SELECT * FROM zo2c_order INTO TABLE @lt_order.
+
+    out->write( '--- SHIPPED ORDERS REPORT ---' ).
+
+    LOOP AT lt_order INTO ls_order WHERE status = 'SHIPPED'.
+      READ TABLE lt_customer INTO ls_customer WITH KEY customer_id = ls_order-customer_id.
+      IF sy-subrc = 0.
+        out->write( |Customer: { ls_customer-name }| ).
+        out->write( |Order ID: { ls_order-order_id }| ).
+        out->write( |Amount: { ls_order-amount }| ).
+        out->write( '------------------------' ).
+        lv_total = lv_total + ls_order-amount.
+      ENDIF.
+    ENDLOOP.
+
+    out->write( |TOTAL REVENUE: { lv_total }| ).
+
+  ENDMETHOD.
+
+ENDCLASS.

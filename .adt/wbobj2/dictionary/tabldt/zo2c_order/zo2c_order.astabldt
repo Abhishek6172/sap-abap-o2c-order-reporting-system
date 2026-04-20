@@ -1,0 +1,15 @@
+@EndUserText.label : 'Sales Order Data'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zo2c_order {
+
+  key client   : abap.clnt not null;
+  key order_id : abap.numc(10) not null;
+  customer_id  : abap.numc(10);
+  order_date   : abap.dats;
+  amount       : abap.dec(10,2);
+  status       : abap.char(20);
+
+}
